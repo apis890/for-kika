@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Kanaya</title>
+    <style>
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px #fff, 0 0 10px #ff00ff, 0 0 15px #ff00ff; }
+            50% { text-shadow: 0 0 10px #fff, 0 0 20px #ff00ff, 0 0 30px #ff00ff; }
+            100% { text-shadow: 0 0 5px #fff, 0 0 10px #ff00ff, 0 0 15px #ff00ff; }
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(120deg, #0b0d1b, #220a33);
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            flex-direction: column;
+        }
+        /* Container Bintang */
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 5px white;
+            animation: twinkle 2s infinite alternate;
+        }
+        @keyframes twinkle {
+            0% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+        .letter-container {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            background: #ffebee;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.5s;
+            background-image: url('https://cdn.pixabay.com/photo/2017/08/30/07/51/heart-2695776_960_720.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .click-text {
+            font-size: 1.2em;
+            color: #c62828;
+            font-weight: bold;
+        }
+        .content-container {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .content-container img {
+            width: 200px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(255, 0, 255, 0.8);
+            margin-bottom: 15px;
+        }
+        .message {
+            font-size: 1.2em;
+            color: #fff;
+            font-weight: bold;
+            margin-top: 10px;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .final-message {
+            display: none;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 20px;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            color: #ff00ff;
+            animation: glow 1.5s infinite alternate;
+        }
+    </style>
+</head>
+<body>
+    <!-- Bintang -->
+    <div class="stars"></div>
+
+    <div class="letter-container" onclick="openLetter()">
+        <span class="click-text">Click here</span>
+    </div>
+
+    <div class="content-container" onclick="showFinalMessage()">
+        <img src="kika.jpg" alt="Your Photo">
+        <p class="message">since the first moment i met you, my world has changed. every little thing about you makes my heart smile. your kindness, your laughter, the way you see the world—it’s all so beautiful. being with you feels like home, a place where i always want to be. you are my sunshine on the darkest days, the warmth that makes everything better. every little moment with you is precious, a memory i hold close to my heart. i never thought i could love someone this much, but here i am, completely in love with you. you are the reason i believe in love, the proof that true love exists. <br><br> <strong>click here again</strong></p>
+    </div>
+
+    <h1 class="final-message">I will always love u, kika ❤️</h1>
+
+    <script>
+        function openLetter() {
+            document.querySelector(".letter-container").style.display = "none";
+            document.querySelector(".content-container").style.display = "block";
+            setTimeout(() => { document.querySelector(".message").style.opacity = "1"; }, 100);
+        }
+        function showFinalMessage() {
+            document.querySelector(".content-container").style.display = "none";
+            document.querySelector(".final-message").style.display = "block";
+            setTimeout(() => { document.querySelector(".final-message").style.opacity = "1"; }, 100);
+        }
+        // Buat bintang muncul secara acak
+        document.addEventListener("DOMContentLoaded", function () {
+            const starsContainer = document.querySelector(".stars");
+
+            for (let i = 0; i < 100; i++) {  // Jumlah bintang
+                let star = document.createElement("div");
+                star.className = "star";
+                star.style.top = Math.random() * 100 + "vh";
+                star.style.left = Math.random() * 100 + "vw";
+                star.style.animationDuration = (Math.random() * 2 + 1) + "s"; // Variasi kelap-kelip
+                starsContainer.appendChild(star);
+            }
+        });
+    </script>
+</body>
+</html>
